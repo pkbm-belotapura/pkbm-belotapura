@@ -1,0 +1,244 @@
+/* 1. RESET & BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Tambahkan ini agar konten tidak tertutup navbar saat di-scroll */
+    scroll-padding-top: 70px; 
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: var(--white);
+}
+
+/* 2. VARIABLES */
+:root {
+    --primary: #0d47a1;   /* biru */
+    --accent: #ffc107;    /* kuning */
+    --dark: #111;
+    --white: #fff;
+    --light: #f5f5f5;
+}
+
+/* 3. NAVBAR */
+header {
+    position: fixed; 
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: rgba(17, 17, 17, 0.95); /* Sedikit lebih gelap agar teks terbaca jelas */
+    color: var(--white);
+    backdrop-filter: blur(5px); /* Efek blur modern di belakang navbar */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* 4. HERO SECTION */
+.hero {
+    height: 100vh;
+    background: url('assets/img/hero.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    position: relative;
+    padding: 0 20px;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6); 
+    z-index: 1;
+}
+
+.hero .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+/* 5. BUTTON */
+.btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 35px;
+    border-radius: 50px; /* Lebih membulat agar modern */
+    background: var(--accent);
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    transform: translateY(-3px);
+}
+
+/* 6. SECTION GENERAL */
+section {
+    padding: 80px 10%;
+}
+
+.about, .program, .contact {
+    text-align: center;
+}
+
+/* 7. PROGRAM CARDS */
+.program-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.program-card {
+    background: var(--light);
+    padding: 40px 30px;
+    border-radius: 15px;
+    min-width: 250px;
+    flex: 1;
+    max-width: 300px;
+    transition: 0.4s;
+    border-bottom: 5px solid var(--primary);
+}
+
+.program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* 8. FOOTER */
+footer {
+    background: var(--dark);
+    color: var(--white);
+    text-align: center;
+    padding: 30px;
+    font-size: 0.9rem;
+}
+
+/* 9. PAGE DETAIL (beranda.html) */
+.page-detail {
+    padding-top: 120px;
+    padding-bottom: 60px;
+}
+
+/* KONTAK HORIZONTAL */
+.contact {
+    padding: 60px 10%;
+    text-align: center;
+    background: var(--light);
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center; /* Mengetengahkan item */
+    align-items: center;
+    gap: 30px; /* Jarak antar item kontak */
+    flex-wrap: wrap; /* Agar otomatis turun jika layar HP sempit */
+    margin-top: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.contact-item i {
+    color: var(--primary); /* Warna ikon jadi biru */
+    font-size: 1.2rem;
+}
+
+.contact-item a {
+    text-decoration: none;
+    color: inherit; /* Mengikuti warna teks body */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.contact-item a:hover {
+    color: var(--primary);
+    transform: translateY(-2px); /* Efek melayang sedikit saat kursor lewat */
+}
+
+/* Responsif untuk HP agar tidak terlalu rapat */
+@media (max-width: 600px) {
+    .contact-container {
+        flex-direction: column; /* Jadi vertikal kalau di HP layar kecil */
+        gap: 15px;
+    }
+}
+
+.image-gallery img {
+    width: 100%;
+    border-radius: 20px;
+    margin: 20px 0;
+}
+
+/* 10. RESPONSIVE */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; 
+    }
+    .hero h2 {
+        font-size: 2rem;
+    }
+    .program-card {
+        min-width: 100%;
+    }
+}
